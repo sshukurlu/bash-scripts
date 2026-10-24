@@ -24,7 +24,7 @@ PASSWORD=$(date +%s%N | sha256sum | head -c32)
 echo "${PASSWORD}"
 
 # An even better password.
-PASSWORD=$(date +%s%N{RANDOM}{RANDOM} | sha256sum | head -c48)
+PASSWORD=$(date +%s%N${RANDOM}${RANDOM} | sha256sum | head -c48)
 echo "${PASSWORD}"
 
 # Append a special character to the password
