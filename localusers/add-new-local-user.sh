@@ -18,7 +18,7 @@ NUMBER_OF_PARAMETERS="${#}"
 if [[ "${NUMBER_OF_PARAMETERS}" -lt 1 ]]
 then
   echo "Please run the command with at least one argument (username). For example:"
-  echo "'sudo ./add-new-local-user.sh argument1 [optional_argument2]...'"
+  echo "'sudo ${0} argument1 [OPTIONAL_ARGUMENT1]...'"
   exit 1
 fi
 
