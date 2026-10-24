@@ -9,7 +9,7 @@
 # Make sure the script is being executed with superuser privileges.
 if [[ "$UID" -ne 0  ]]
 then
-    echo "Please run with sudo or as root."
+    echo "Please run with sudo or as root." >&2
     exit 1    
 fi
 
@@ -33,7 +33,7 @@ COMMENT="${@}"
 PASSWORD=$(date +%s%N${RANDOM}${RANDOM} | sha256sum | head -c48)
 
 # Create the account.
-useradd -c "${COMMENT}" -m ${USER_NAME}
+useradd -c "${COMMENT}" -m ${USER_NAME} &> /dev/null
 
 # Check to see if the useradd command succeeded.
 # Inform the user if the account was not able to be created for some reason.
@@ -57,7 +57,6 @@ fi
 passwd -e ${USER_NAME} &> /dev/null 
 
 # Display the username, password and the host where the account was created 
-echo
 echo 'username:'
 echo "${USER_NAME}"
 echo
