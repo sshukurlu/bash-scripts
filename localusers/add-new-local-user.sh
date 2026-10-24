@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # This script creates a new user on the local system.
-# You'll be prompted to enter the username (login), the person name and a password.
+# You'll need to supply a username (login) as an argument to the script.
+# Optionally, you can also provide a comment for the account as an argument.
+# A password will be automatically generated for the account.
 # The username, password and host for the account will be displayed.
 
 # Make sure the script is being executed with superuser privileges.
@@ -15,13 +17,14 @@ fi
 NUMBER_OF_PARAMETERS="${#}"
 if [[ "${NUMBER_OF_PARAMETERS}" -lt 1 ]]
 then
-  echo "Please run the command with at least one argument. For example:"
-  echo "'sudo ./add-new-local-user.sh argument1 [optional_argument2]'"
+  echo "Please run the command with at least one argument (username). For example:"
+  echo "'sudo ./add-new-local-user.sh argument1 [optional_argument2]...'"
   exit 1
 fi
 
 # Create a variable for the first parameter (login).
 USER_NAME="${1}"
+
 # Then using shift create the COMMENT variable.
 shift
 COMMENT="${@}" 
@@ -43,6 +46,7 @@ fi
 # Set the generated earlier password for the account.
 echo ${PASSWORD} | passwd --stdin ${USER_NAME}
 
+# Check to see if the passwd command succeeded.
 if [[ "${?}" -ne 0  ]]
 then
     echo 'The password for the account could not be set.'
