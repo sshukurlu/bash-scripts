@@ -6,6 +6,7 @@
 if [[ "${UID}" -ne 0 ]]
 then
   echo 'Please run with sudo or as root.' >&2
+  exit 1
 fi
 
 # Assume the first argument is the user to delete.
