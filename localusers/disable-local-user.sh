@@ -2,8 +2,6 @@
 
 # This script allows for a local Linux account to be disabled, deleted and optionally archived
 
-# Make sure the script is running with sudo or root privileges.
-
 # Function that provides a usage statement if the user does not supply an account name on the command line.
 
 usage() {
