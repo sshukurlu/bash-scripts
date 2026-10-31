@@ -7,7 +7,7 @@ LOG_FILE="${1}"
 # Make sure a file was supplied as an argument.
 if [[ ! -e "${LOG_FILE}" ]]
 then
-  echo "Cannot open log file: ${LOG_FILE}." >&2
+  echo "Cannot open log file: ${LOG_FILE}" >&2
   exit 1
 fi
 
